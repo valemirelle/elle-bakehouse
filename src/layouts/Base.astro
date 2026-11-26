@@ -1,5 +1,6 @@
 ---
 // Plantilla compartida: menú, letras, colores y pie de página de TODAS las páginas.
+import { ORDENAR_URL, INSTAGRAM_URL } from '../config';
 const {
   title = 'Elle Bakehouse',
   description = 'Pan, pastelería y repostería hechos con amor en la Ciudad de México.',
@@ -31,6 +32,7 @@ const links = [
         {links.map((l) => (
           <a href={l.href} class={path === l.href ? 'active' : ''}>{l.label}</a>
         ))}
+        <a href={ORDENAR_URL} class="ordena" target="_blank" rel="noopener">Ordena aquí</a>
       </div>
     </nav>
     <slot />
@@ -51,8 +53,8 @@ const links = [
         </div>
         <div>
           <h4>Síguenos</h4>
-          <!-- ⚠️ Pon aquí los links reales de redes sociales -->
-          <p class="social"><a href="#">Instagram</a> · <a href="#">Facebook</a></p>
+          <p class="social"><a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a></p>
+          <p><a href={ORDENAR_URL} target="_blank" rel="noopener">Haz tu pedido por Instagram</a></p>
         </div>
       </div>
       <p class="copy">© Elle Bakehouse</p>
@@ -108,7 +110,23 @@ const links = [
 
   nav .links {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1.75rem;
+  }
+
+  nav .links a.ordena {
+    padding: .55rem 1.2rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--red);
+    color: #fff;
+    letter-spacing: .12em;
+  }
+
+  nav .links a.ordena:hover {
+    background: var(--red-dark);
+    color: #fff;
   }
 
   nav .links a {

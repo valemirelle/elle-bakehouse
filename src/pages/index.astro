@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ORDENAR_URL } from '../config';
 import Cupcake from '../components/Cupcake.astro';
 import Carrusel from '../components/Carrusel.astro';
 
@@ -21,7 +22,11 @@ const resenas = [
       <p>Horneado con amor desde 2020.</p>
       <p>Elle Bakehouse es un proyecto de familia: una mamá y una hija haciendo pan, pasteles y repostería para tus momentos especiales.</p>
       <p>Cada pieza se hace por pedido.</p>
-      <a class="btn" href="/menu">Ver el menú</a>
+      <div class="acciones">
+        <a class="btn" href={ORDENAR_URL} target="_blank" rel="noopener">Ordena aquí</a>
+        <a class="btn btn-claro" href="/menu">Ver el menú</a>
+      </div>
+      <p class="ig-nota">Los pedidos se toman por mensaje en Instagram.</p>
     </div>
     <div class="photo story-photo trio">
       <Cupcake />
@@ -147,6 +152,31 @@ const resenas = [
   .trio :global(.cupcake:nth-child(2)) { transform: translateY(-28px) scale(1.12); }
 
   .photo.mini :global(.cupcake) { width: 80%; }
+
+  .acciones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .9rem;
+    margin-top: 2.25rem;
+  }
+
+  .acciones .btn { margin-top: 0; }
+
+  .btn-claro {
+    background: transparent;
+    color: var(--red);
+    border: 1.5px solid var(--red);
+    box-shadow: none;
+  }
+
+  .btn-claro:hover { color: #fff; }
+
+  .story-text .ig-nota {
+    margin-top: 1rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: .85rem;
+  }
 
   /* Pasteles por pedido */
   .orders {
