@@ -1,38 +1,222 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// ⚠️ Reseñas: todavía no hay reseñas reales. Cambia estos espacios por comentarios reales de clientes.
+const resenas = [
+  { texto: 'Aquí irá la reseña real de un cliente.', nombre: 'Nombre del cliente' },
+  { texto: 'Aquí irá la reseña real de un cliente.', nombre: 'Nombre del cliente' },
+  { texto: 'Aquí irá la reseña real de un cliente.', nombre: 'Nombre del cliente' },
+];
 ---
 <Base>
-  <header>
-    <h1>Elle Bakehouse</h1>
+  <!-- 1. Nuestra historia -->
+  <section class="story">
+    <div class="story-text">
+      <h1>Nuestra historia</h1>
+      <span class="divider" aria-hidden="true"></span>
+      <p>Horneado con amor desde 2020.</p>
+      <p>Elle Bakehouse es un proyecto de familia: una mamá y una hija haciendo pan, pasteles y repostería para tus momentos especiales.</p>
+      <p>Cada pieza se hace por pedido.</p>
+      <a class="btn" href="/menu">Ver el menú</a>
+    </div>
+    <div class="photo story-photo">Foto: Mirelle decorando un pastel</div>
+  </section>
+
+  <!-- 2. Pasteles por pedido -->
+  <section class="orders">
+    <div class="orders-form">
+      <h2>Pasteles por pedido</h2>
+      <span class="divider" aria-hidden="true"></span>
+      <p class="lead">¿Tienes una celebración? Cuéntanos qué te imaginas y lo hacemos realidad.</p>
+      <!-- Por ahora el formulario abre el correo de quien lo llena. Más adelante se conecta a un sistema real. -->
+      <form action="mailto:hello@ellebakehouse.com" method="post" enctype="text/plain">
+        <div class="grid">
+          <input name="Nombre" placeholder="Nombre completo" required />
+          <input name="Correo" type="email" placeholder="Correo electrónico" required />
+          <input name="Telefono" type="tel" placeholder="Teléfono / WhatsApp" />
+          <input name="Fecha" type="date" aria-label="Fecha del evento" />
+          <select name="Personas" aria-label="Número de personas">
+            <option value="">Número de personas</option>
+            <option>10–15</option>
+            <option>15–25</option>
+            <option>25–40</option>
+            <option>Más de 40</option>
+          </select>
+          <select name="Entrega" aria-label="Tipo de entrega">
+            <option value="">Tipo de entrega</option>
+            <option>A domicilio</option>
+            <option>Recoger en Perisur (sábados)</option>
+          </select>
+        </div>
+        <textarea name="Mensaje" rows="4" placeholder="Sabor, decoración, ideas…"></textarea>
+        <button class="btn" type="submit">Enviar solicitud</button>
+      </form>
+    </div>
+    <div class="orders-side">
+      <div class="photo">Foto: pastel decorado con flores</div>
+      <p class="note card">Hecho para ti, hecho para celebrar.</p>
+    </div>
+  </section>
+
+  <!-- 3. Reseñas -->
+  <section class="reviews">
+    <h2>Lo que dicen nuestros clientes</h2>
     <span class="divider" aria-hidden="true"></span>
-    <p class="tagline">Fresh bread &amp; pastries, baked daily.</p>
-  </header>
-  <main>
-    <ul class="products">
-      <li class="card">Sourdough</li>
-      <li class="card">Croissants</li>
-      <li class="card">Cinnamon rolls</li>
-    </ul>
-    <a class="btn" href="mailto:hello@ellebakehouse.com">Order</a>
-  </main>
+    <div class="review-grid">
+      {resenas.map((r) => (
+        <article class="card review">
+          <div class="photo mini">Foto</div>
+          <div>
+            <p class="stars" aria-hidden="true">★★★★★</p>
+            <p class="quote">{r.texto}</p>
+            <p class="who">— {r.nombre}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </Base>
 
 <style>
-  .products {
-    list-style: none;
+  section {
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0;
-    max-width: 640px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
   }
 
-  .products li {
-    flex: 1 1 160px;
-    padding: 1.6rem 1rem;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.3rem;
+  h2 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--ink);
+  }
+
+  /* Nuestra historia */
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .story-text p {
+    margin: .6rem auto;
+    max-width: 34ch;
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .story-photo { min-height: 420px; }
+
+  /* Pasteles por pedido */
+  .orders {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+    border-top: 1px solid var(--blush);
+  }
+
+  .lead {
+    margin: 0 auto 1.75rem;
+    max-width: 40ch;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  form { text-align: left; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+    margin-bottom: .8rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: .8rem .95rem;
+    font: inherit;
+    font-size: .9rem;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid #ead6d1;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(217, 165, 160, .25);
+  }
+
+  textarea { resize: vertical; }
+
+  form .btn { margin-top: 1.25rem; }
+
+  .orders-side { display: grid; gap: 1rem; }
+
+  .orders-side .photo { min-height: 340px; }
+
+  .note {
+    margin: 0;
+    padding: 1.2rem;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--red);
+    background: var(--blush);
+  }
+
+  /* Reseñas */
+  .reviews { border-top: 1px solid var(--blush); }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .review {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    text-align: left;
+    align-items: center;
+  }
+
+  .photo.mini {
+    flex: 0 0 88px;
+    min-height: 88px;
+    font-size: .75rem;
+  }
+
+  .stars {
+    margin: 0 0 .3rem;
+    color: var(--rose);
+    letter-spacing: .15em;
+    font-size: .85rem;
+  }
+
+  .quote {
+    margin: 0 0 .4rem;
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .who {
+    margin: 0;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 760px) {
+    .story, .orders { grid-template-columns: 1fr; }
+    .story-photo { min-height: 280px; }
+    .grid { grid-template-columns: 1fr; }
   }
 </style>

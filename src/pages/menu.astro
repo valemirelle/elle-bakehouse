@@ -5,36 +5,36 @@ import Base from '../layouts/Base.astro';
 // Sin precios por ahora.
 const menu = [
   {
-    section: 'Bread',
+    section: 'Pan',
     items: [
-      { name: 'Sourdough', note: 'Crusty country loaf' },
-      { name: 'Baguette', note: 'Classic French stick' },
-      { name: 'Brioche', note: 'Soft, buttery loaf' },
+      { name: 'Pan de masa madre', note: 'Corteza crujiente' },
+      { name: 'Baguette', note: 'Clásica francesa' },
+      { name: 'Brioche', note: 'Suave y con mantequilla' },
     ],
   },
   {
-    section: 'Pastries',
+    section: 'Pan dulce',
     items: [
-      { name: 'Croissant', note: 'All-butter, flaky layers' },
-      { name: 'Cinnamon roll', note: 'Cream cheese frosting' },
-      { name: 'Pain au chocolat', note: 'Dark chocolate batons' },
+      { name: 'Croissant', note: 'Hojaldrado, de pura mantequilla' },
+      { name: 'Rol de canela', note: 'Con glaseado de queso crema' },
+      { name: 'Pan de chocolate', note: 'Con chocolate amargo' },
     ],
   },
   {
-    section: 'Cakes',
+    section: 'Pasteles',
     items: [
-      { name: 'Chocolate cake', note: 'Serves 10–12' },
-      { name: 'Carrot cake', note: 'Walnuts & cream cheese' },
-      { name: 'Cupcakes (6)', note: 'Assorted flavors' },
+      { name: 'Pastel de chocolate', note: 'Para 10–12 personas' },
+      { name: 'Pastel de zanahoria', note: 'Con nuez y queso crema' },
+      { name: 'Cupcakes (6)', note: 'Sabores surtidos' },
     ],
   },
 ];
 ---
-<Base title="Menu · Elle Bakehouse" description="Bread, pastries and cakes from Elle Bakehouse.">
+<Base title="Menú · Elle Bakehouse" description="Pan, pan dulce y pasteles de Elle Bakehouse.">
   <header>
-    <h1>Menu</h1>
+    <h1>Menú</h1>
     <span class="divider" aria-hidden="true"></span>
-    <p class="tagline">Baked fresh, made to order.</p>
+    <p class="tagline">Horneado fresco, hecho por pedido.</p>
   </header>
   <main>
     <div class="sections">
@@ -54,7 +54,7 @@ const menu = [
         </section>
       ))}
     </div>
-    <a class="btn" href="mailto:hello@ellebakehouse.com">Order</a>
+    <a class="btn" href="mailto:hello@ellebakehouse.com">Hacer un pedido</a>
   </main>
 </Base>
 

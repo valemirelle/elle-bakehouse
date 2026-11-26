@@ -3,16 +3,16 @@ import Base from '../layouts/Base.astro';
 
 // ⚠️ DATOS DE PRUEBA (mock): cambia nombres, puestos, correos y teléfonos por los reales.
 const team = [
-  { name: 'Ana López', role: 'Head Baker', email: 'ana@ellebakehouse.com', phone: '+52 55 0000 0001' },
-  { name: 'Carlos Ruiz', role: 'Orders & Deliveries', email: 'carlos@ellebakehouse.com', phone: '+52 55 0000 0002' },
-  { name: 'Sofía Méndez', role: 'Custom Cakes & Events', email: 'sofia@ellebakehouse.com', phone: '+52 55 0000 0003' },
+  { name: 'Ana López', role: 'Repostera principal', email: 'ana@ellebakehouse.com', phone: '+52 55 0000 0001' },
+  { name: 'Carlos Ruiz', role: 'Pedidos y entregas', email: 'carlos@ellebakehouse.com', phone: '+52 55 0000 0002' },
+  { name: 'Sofía Méndez', role: 'Pasteles y eventos', email: 'sofia@ellebakehouse.com', phone: '+52 55 0000 0003' },
 ];
 ---
-<Base title="Contact · Elle Bakehouse" description="Get in touch with Elle Bakehouse.">
+<Base title="Contacto · Elle Bakehouse" description="Ponte en contacto con Elle Bakehouse.">
   <header>
-    <h1>Contact</h1>
+    <h1>Contacto</h1>
     <span class="divider" aria-hidden="true"></span>
-    <p class="tagline">We'd love to bake something for you.</p>
+    <p class="tagline">Nos encantaría hornear algo para ti.</p>
   </header>
   <main>
     <div class="team">
@@ -28,7 +28,7 @@ const team = [
         </article>
       ))}
     </div>
-    <a class="btn" href="mailto:hello@ellebakehouse.com">Say hello</a>
+    <a class="btn" href="mailto:hello@ellebakehouse.com">Escríbenos</a>
   </main>
 </Base>
 
