@@ -1,5 +1,7 @@
 {
   "name": "elle-bakehouse",
   "compatibility_date": "2026-11-01",
-  "assets": { "directory": "./dist" }
+  "assets": { "directory": "./dist" },
+  // Necesario para los links de vista previa de cada rama
+  "previews": {}
 }
