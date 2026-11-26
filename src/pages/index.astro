@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cupcake from '../components/Cupcake.astro';
+import Carrusel from '../components/Carrusel.astro';
 
 // ⚠️ Reseñas: todavía no hay reseñas reales. Cambia estos espacios por comentarios reales de clientes.
 const resenas = [
@@ -28,6 +29,9 @@ const resenas = [
       <Cupcake frosting="#6b3b2a" liner="#f2b8c6" topping="#8c0d23" />
     </div>
   </section>
+
+  <!-- Carrusel de fotos -->
+  <Carrusel />
 
   <!-- 2. Pasteles por pedido -->
   <section class="orders">

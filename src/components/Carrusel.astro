@@ -1,0 +1,81 @@
+---
+// Carrusel de fotos que va rodando solo.
+// Fotos gratuitas de Unsplash (licencia libre). Para usar fotos propias,
+// pon el archivo en /public/fotos/ y cambia "src" por "/fotos/nombre.jpg".
+const fotos = [
+  { src: 'https://images.unsplash.com/photo-1617859047277-9f47d2bd9696', alt: 'Concha de vainilla' },
+  { src: 'https://images.unsplash.com/photo-1599785209758-243af93bd074', alt: 'Pastelitos con betún rosa' },
+  { src: 'https://images.unsplash.com/photo-1706341841342-4e0dca94e983', alt: 'Concha de chocolate recién horneada' },
+  { src: 'https://images.unsplash.com/photo-1620442513427-814e90d384e9', alt: 'Pastelito rosa' },
+  { src: 'https://images.unsplash.com/photo-1642442929208-7d395af72107', alt: 'Concha de colores' },
+  { src: 'https://images.unsplash.com/photo-1603532553059-3facb851d937', alt: 'Pastelitos decorados con duya' },
+  { src: 'https://images.unsplash.com/photo-1650419741906-1cdead9c9b4f', alt: 'Concha blanca' },
+  { src: 'https://images.unsplash.com/photo-1622995706580-a332aed41cdf', alt: 'Pastelitos con betún rosa' },
+  { src: 'https://images.unsplash.com/photo-1706341842409-39f198ac6e4c', alt: 'Pan dulce de chocolate' },
+  { src: 'https://images.unsplash.com/photo-1599785209615-a35f883d93c8', alt: 'Pastelitos con cereza' },
+];
+const url = (src: string) => `${src}?auto=format&fit=crop&w=560&h=420&q=75`;
+---
+<section class="carrusel" aria-label="Fotos de pan mexicano y pastelitos">
+  <div class="pista">
+    {[...fotos, ...fotos].map((f, i) => (
+      <img
+        src={url(f.src)}
+        alt={i < fotos.length ? f.alt : ''}
+        aria-hidden={i >= fotos.length ? 'true' : undefined}
+        loading="lazy"
+        width="280"
+        height="210"
+      />
+    ))}
+  </div>
+  <p class="credito">Fotos: Unsplash</p>
+</section>
+
+<style>
+  .carrusel {
+    width: 100%;
+    overflow: hidden;
+    padding: .5rem 0 2.5rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .pista {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: rodar 60s linear infinite;
+  }
+
+  .carrusel:hover .pista { animation-play-state: paused; }
+
+  .pista img {
+    width: 280px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(43, 29, 26, .1);
+    background: var(--blush);
+  }
+
+  .credito {
+    margin: .9rem 0 0;
+    font-size: .7rem;
+    letter-spacing: .05em;
+    color: var(--muted);
+    opacity: .7;
+  }
+
+  @keyframes rodar {
+    to { transform: translateX(calc(-50% - .5rem)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pista { animation-duration: 180s; }
+  }
+
+  @media (max-width: 760px) {
+    .pista img { width: 200px; height: 150px; }
+  }
+</style>
