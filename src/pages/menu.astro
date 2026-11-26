@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ⚠️ DATOS DE PRUEBA (mock): productos y precios inventados.
+// Antes de publicar, cámbialos por los del Catálogo de productos en Notion.
+const menu = [
+  {
+    section: 'Bread',
+    items: [
+      { name: 'Sourdough', note: 'Crusty country loaf', price: 120 },
+      { name: 'Baguette', note: 'Classic French stick', price: 60 },
+      { name: 'Brioche', note: 'Soft, buttery loaf', price: 140 },
+    ],
+  },
+  {
+    section: 'Pastries',
+    items: [
+      { name: 'Croissant', note: 'All-butter, flaky layers', price: 45 },
+      { name: 'Cinnamon roll', note: 'Cream cheese frosting', price: 55 },
+      { name: 'Pain au chocolat', note: 'Dark chocolate batons', price: 50 },
+    ],
+  },
+  {
+    section: 'Cakes',
+    items: [
+      { name: 'Chocolate cake', note: 'Serves 10–12', price: 650 },
+      { name: 'Carrot cake', note: 'Walnuts & cream cheese', price: 600 },
+      { name: 'Cupcakes (6)', note: 'Assorted flavors', price: 240 },
+    ],
+  },
+];
+---
+<Base title="Menu · Elle Bakehouse" description="Bread, pastries and cakes from Elle Bakehouse.">
+  <header>
+    <h1>Menu</h1>
+    <span class="divider" aria-hidden="true"></span>
+    <p class="tagline">Baked fresh, made to order.</p>
+  </header>
+  <main>
+    <div class="sections">
+      {menu.map((s) => (
+        <section class="card">
+          <h2>{s.section}</h2>
+          <ul>
+            {s.items.map((i) => (
+              <li>
+                <div>
+                  <span class="name">{i.name}</span>
+                  <span class="note">{i.note}</span>
+                </div>
+                <span class="price">${i.price}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+    <a class="btn" href="mailto:hello@ellebakehouse.com">Order</a>
+  </main>
+</Base>
+
+<style>
+  .sections {
+    margin: 0 auto;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    text-align: left;
+  }
+
+  section {
+    padding: 1.75rem 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 1.25rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--red);
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: .8rem 0;
+    border-top: 1px solid var(--blush);
+  }
+
+  li:first-child {
+    border-top: none;
+  }
+
+  .name {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+  }
+
+  .note {
+    display: block;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+
+  .price {
+    font-weight: 500;
+    color: var(--red);
+    white-space: nowrap;
+  }
+</style>
