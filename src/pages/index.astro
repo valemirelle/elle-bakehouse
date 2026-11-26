@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Cupcake from '../components/Cupcake.astro';
 
 // ⚠️ Reseñas: todavía no hay reseñas reales. Cambia estos espacios por comentarios reales de clientes.
 const resenas = [
@@ -12,14 +13,20 @@ const resenas = [
   <!-- 1. Nuestra historia -->
   <section class="story">
     <div class="story-text">
-      <h1>Nuestra historia</h1>
+      <h1>Elle Bakehouse</h1>
+      <p class="kicker">Nuestra historia</p>
       <span class="divider" aria-hidden="true"></span>
+      <!-- ⚠️ Biografía provisional: Mirelle la va a reemplazar -->
       <p>Horneado con amor desde 2020.</p>
       <p>Elle Bakehouse es un proyecto de familia: una mamá y una hija haciendo pan, pasteles y repostería para tus momentos especiales.</p>
       <p>Cada pieza se hace por pedido.</p>
       <a class="btn" href="/menu">Ver el menú</a>
     </div>
-    <div class="photo story-photo">Foto: Mirelle decorando un pastel</div>
+    <div class="photo story-photo trio">
+      <Cupcake />
+      <Cupcake frosting="#fbe3d6" liner="#d9a5a0" />
+      <Cupcake frosting="#6b3b2a" liner="#f2b8c6" topping="#8c0d23" />
+    </div>
   </section>
 
   <!-- 2. Pasteles por pedido -->
@@ -53,7 +60,7 @@ const resenas = [
       </form>
     </div>
     <div class="orders-side">
-      <div class="photo">Foto: pastel decorado con flores</div>
+      <div class="photo"><Cupcake frosting="#fff3f5" liner="#8c0d23" /></div>
       <p class="note card">Hecho para ti, hecho para celebrar.</p>
     </div>
   </section>
@@ -65,7 +72,7 @@ const resenas = [
     <div class="review-grid">
       {resenas.map((r) => (
         <article class="card review">
-          <div class="photo mini">Foto</div>
+          <div class="photo mini"><Cupcake frosting="#f2b8c6" liner="#d9a5a0" /></div>
           <div>
             <p class="stars" aria-hidden="true">★★★★★</p>
             <p class="quote">{r.texto}</p>
@@ -101,16 +108,41 @@ const resenas = [
     align-items: center;
   }
 
-  .story-text p {
-    margin: .6rem auto;
-    max-width: 34ch;
+  .story-text h1 {
+    font-size: clamp(3.6rem, 9vw, 6.2rem);
+  }
+
+  .kicker {
+    margin: .5rem 0 0 !important;
     font-family: var(--serif);
-    font-size: 1.08rem;
+    font-style: italic;
+    font-size: 1.25rem !important;
+    letter-spacing: .04em;
+    color: var(--rose) !important;
+  }
+
+  .story-text p {
+    margin: .7rem auto;
+    max-width: 36ch;
+    font-family: var(--serif);
+    font-size: 1.28rem;
     line-height: 1.7;
     color: var(--muted);
   }
 
   .story-photo { min-height: 420px; }
+
+  .trio {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+    padding: 2rem 1rem;
+  }
+
+  .trio :global(.cupcake) { width: 92%; }
+
+  .trio :global(.cupcake:nth-child(2)) { transform: translateY(-28px) scale(1.12); }
+
+  .photo.mini :global(.cupcake) { width: 80%; }
 
   /* Pasteles por pedido */
   .orders {
