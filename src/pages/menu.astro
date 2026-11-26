@@ -1,31 +1,31 @@
 ---
 import Base from '../layouts/Base.astro';
 
-// ⚠️ DATOS DE PRUEBA (mock): productos y precios inventados.
-// Antes de publicar, cámbialos por los del Catálogo de productos en Notion.
+// ⚠️ DATOS DE PRUEBA (mock): productos inventados. Cámbialos por los reales.
+// Sin precios por ahora.
 const menu = [
   {
     section: 'Bread',
     items: [
-      { name: 'Sourdough', note: 'Crusty country loaf', price: 120 },
-      { name: 'Baguette', note: 'Classic French stick', price: 60 },
-      { name: 'Brioche', note: 'Soft, buttery loaf', price: 140 },
+      { name: 'Sourdough', note: 'Crusty country loaf' },
+      { name: 'Baguette', note: 'Classic French stick' },
+      { name: 'Brioche', note: 'Soft, buttery loaf' },
     ],
   },
   {
     section: 'Pastries',
     items: [
-      { name: 'Croissant', note: 'All-butter, flaky layers', price: 45 },
-      { name: 'Cinnamon roll', note: 'Cream cheese frosting', price: 55 },
-      { name: 'Pain au chocolat', note: 'Dark chocolate batons', price: 50 },
+      { name: 'Croissant', note: 'All-butter, flaky layers' },
+      { name: 'Cinnamon roll', note: 'Cream cheese frosting' },
+      { name: 'Pain au chocolat', note: 'Dark chocolate batons' },
     ],
   },
   {
     section: 'Cakes',
     items: [
-      { name: 'Chocolate cake', note: 'Serves 10–12', price: 650 },
-      { name: 'Carrot cake', note: 'Walnuts & cream cheese', price: 600 },
-      { name: 'Cupcakes (6)', note: 'Assorted flavors', price: 240 },
+      { name: 'Chocolate cake', note: 'Serves 10–12' },
+      { name: 'Carrot cake', note: 'Walnuts & cream cheese' },
+      { name: 'Cupcakes (6)', note: 'Assorted flavors' },
     ],
   },
 ];
@@ -48,7 +48,6 @@ const menu = [
                   <span class="name">{i.name}</span>
                   <span class="note">{i.note}</span>
                 </div>
-                <span class="price">${i.price}</span>
               </li>
             ))}
           </ul>
@@ -113,9 +112,4 @@ const menu = [
     color: var(--muted);
   }
 
-  .price {
-    font-weight: 500;
-    color: var(--red);
-    white-space: nowrap;
-  }
 </style>
