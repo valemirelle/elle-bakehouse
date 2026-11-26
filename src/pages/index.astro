@@ -1,0 +1,41 @@
+---
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elle Bakehouse</title>
+    <meta name="description" content="Fresh bread and pastries, baked with love." />
+  </head>
+  <body>
+    <header>
+      <h1>Elle Bakehouse</h1>
+      <p>Fresh bread &amp; pastries, baked daily.</p>
+    </header>
+    <main>
+      <ul>
+        <li>Sourdough</li>
+        <li>Croissants</li>
+        <li>Cinnamon rolls</li>
+      </ul>
+      <a class="btn" href="mailto:hello@ellebakehouse.com">Order</a>
+    </main>
+    <footer>© Elle Bakehouse</footer>
+  </body>
+</html>
+
+<style is:global>
+  :root { --red: #c8102e; --green: #2e7d32; --white: #fff; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+    font-family: Georgia, serif; background: var(--white); color: #222; text-align: center;
+  }
+  header { background: var(--red); color: var(--white); padding: 4rem 1rem; border-bottom: 8px solid var(--green); }
+  h1 { margin: 0 0 .5rem; font-size: 3rem; }
+  main { flex: 1; padding: 3rem 1rem; }
+  ul { list-style: none; padding: 0; font-size: 1.4rem; color: var(--green); }
+  li { margin: .5rem 0; }
+  .btn { display: inline-block; margin-top: 1.5rem; padding: .8rem 2rem; background: var(--green); color: var(--white); text-decoration: none; border-radius: 4px; }
+  .btn:hover { background: var(--red); }
+  footer { padding: 1rem; background: var(--green); color: var(--white); font-size: .9rem; }
+</style>
