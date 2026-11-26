@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ⚠️ DATOS DE PRUEBA (mock): cambia nombres, puestos, correos y teléfonos por los reales.
+const team = [
+  { name: 'Ana López', role: 'Head Baker', email: 'ana@ellebakehouse.com', phone: '+52 55 0000 0001' },
+  { name: 'Carlos Ruiz', role: 'Orders & Deliveries', email: 'carlos@ellebakehouse.com', phone: '+52 55 0000 0002' },
+  { name: 'Sofía Méndez', role: 'Custom Cakes & Events', email: 'sofia@ellebakehouse.com', phone: '+52 55 0000 0003' },
+];
+---
+<Base title="Contact · Elle Bakehouse" description="Get in touch with Elle Bakehouse.">
+  <header>
+    <h1>Contact</h1>
+    <span class="divider" aria-hidden="true"></span>
+    <p class="tagline">We'd love to bake something for you.</p>
+  </header>
+  <main>
+    <div class="team">
+      {team.map((p) => (
+        <article class="card person">
+          <div class="avatar" aria-hidden="true">
+            {p.name.split(' ').map((w) => w[0]).join('')}
+          </div>
+          <h2>{p.name}</h2>
+          <p class="role">{p.role}</p>
+          <a href={`mailto:${p.email}`}>{p.email}</a>
+          <a href={`tel:${p.phone.replace(/\s/g, '')}`}>{p.phone}</a>
+        </article>
+      ))}
+    </div>
+    <a class="btn" href="mailto:hello@ellebakehouse.com">Say hello</a>
+  </main>
+</Base>
+
+<style>
+  .team {
+    margin: 0 auto;
+    max-width: 860px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .person {
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    margin-bottom: .75rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--blush);
+    color: var(--red);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+  }
+
+  .role {
+    margin: 0 0 .75rem;
+    font-size: .75rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .person a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .92rem;
+  }
+
+  .person a:hover {
+    color: var(--red);
+  }
+</style>
